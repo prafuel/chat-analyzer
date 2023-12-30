@@ -1,1 +1,1 @@
-# chat-analyzer
+# instagram-chat-analyzer
