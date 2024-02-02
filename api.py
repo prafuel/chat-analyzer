@@ -1,4 +1,4 @@
-from json_to_df import JSON_to_DF
+from json_to_df import JSON2DF
 
 import pandas as pd 
 from matplotlib import pyplot as plt
@@ -18,7 +18,7 @@ if uploaded_file is not None:
 
     # df = pd.read_csv("./main.csv") # eventually going to remove it
 
-    json_to_df = JSON_to_DF(data)
+    json_to_df = JSON2DF(data)
 
     # working on json to df converter -> on file name json_to_df.py
     df = json_to_df.converter() # this method will run and gives output in Dataframe format
@@ -53,7 +53,7 @@ if uploaded_file is not None:
 
         # most active user
         if user == "Overall":
-            col3, col4 = st.columns(spec=2)
+            col3, col4, col5= st.columns(spec=3)
             with col3:
                 st.header("Activity bar")
                 active = df['users'].value_counts()
@@ -64,6 +64,14 @@ if uploaded_file is not None:
                 st.pyplot(fig)
 
             with col4:
+                st.header("Plot")
+                fig, ax = plt.subplots()
+                ax.plot(active)
+                plt.xticks(rotation=90)
+                fig.set_size_inches(5.5, 2.5)
+                st.pyplot(fig)
+
+            with col5:
                 st.header("Active Percentage")
                 st.dataframe(round((df['users'].value_counts() / df.shape[0])*100,2).reset_index().rename(columns={"count" : "percentage"}))
 

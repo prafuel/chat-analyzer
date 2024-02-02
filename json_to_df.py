@@ -13,7 +13,7 @@ from collections import Counter
 
 # ps = PorterStemmer()
 
-class JSON_to_DF :
+class JSON2DF :
     def __init__(self, data:str) -> None:
         self.data = json.loads(data)
 
